@@ -1,0 +1,32 @@
+:root {
+  --primary: #007AFF;
+  --danger: #FF3B30;
+  --success: #34C759;
+  --text: #111;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: #f7f7f7; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 16px; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; }
+.card { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 16px; box-shadow: 0 10px 16px rgba(0,0,0,0.06); }
+.title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.muted { color: #666; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; font-weight: 600; }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-outline { background: #fff; color: var(--primary); border-color: var(--primary); }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.grid-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.legend { display: flex; gap: 12px; margin-top: 8px; font-size: 12px; }
+.legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 10px; }
+
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border: 1px solid #eee; padding: 8px; text-align: left; }
+.table thead th { background: #fafafa; font-weight: 700; }
+.falta-cell { color: var(--danger); font-weight: 700; }
+
+.footer { text-align: center; margin: 24px 0; color: #333; }
+.footer a { color: var(--primary); font-weight: 700; text-decoration: none; }
