@@ -1,0 +1,30 @@
+{
+  "name": "ControlePontoWEB",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.19",
+    "jspdf": "^2.5.1",
+    "next": "^14.2.6",
+    "react": "^18.2.0",
+    "react-day-picker": "^9.0.8",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.21",
+    "@types/uuid": "^11.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.6",
+    "typescript": "^5.4.5"
+  }
+}
