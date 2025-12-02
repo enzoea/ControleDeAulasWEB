@@ -30,6 +30,19 @@ export function metaCicloISO(base: Date = new Date()) {
   return { inicioISO: toISO(inicio), fimISO: toISO(fim) };
 }
 
+// Permite obter ciclos relativos ao atual: offset 0 = atual, -1 = anterior, +1 = próximo
+export function getCicloPorOffset(offset: number, base: Date = new Date()) {
+  const { inicio, fim } = getCicloAtual(base);
+  const inicio2 = dayjs(inicio).tz().add(offset, 'month').toDate();
+  const fim2 = dayjs(fim).tz().add(offset, 'month').toDate();
+  return { inicio: inicio2, fim: fim2 };
+}
+
+export function metaCicloISOByOffset(offset: number, base: Date = new Date()) {
+  const { inicio, fim } = getCicloPorOffset(offset, base);
+  return { inicioISO: toISO(inicio), fimISO: toISO(fim) };
+}
+
 export function listarDiasNoCiclo(inicio: Date, fim: Date): string[] {
   const start = dayjs(inicio).tz().startOf('day');
   const end = dayjs(fim).tz().startOf('day');

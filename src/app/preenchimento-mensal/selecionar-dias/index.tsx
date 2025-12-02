@@ -5,7 +5,7 @@ import InlineHeader from '@components/InlineHeader';
 import CalendarCicloWeb from '@components/CalendarCicloWeb';
 import AppButton from '@components/AppButton';
 import AppFooter from '@components/AppFooter';
-import { getCicloAtual, metaCicloISO } from '@/core/ciclo';
+import { getCicloPorOffset, metaCicloISOByOffset } from '@/core/ciclo';
 import { resetStatusPorTipoNoCiclo } from '@/data/db';
 import { containsWeekend } from '../../utils/date';
 import { useRouter } from 'next/navigation';
@@ -14,8 +14,9 @@ import { setSelectedDays } from '../helpers/storage';
 
 export default function SelecionarDias() {
   const router = useRouter();
-  const { inicio, fim } = useMemo(() => getCicloAtual(new Date()), []);
-  const meta = useMemo(() => metaCicloISO(new Date()), []);
+  const [cicloOffset, setCicloOffset] = useState(0);
+  const { inicio, fim } = useMemo(() => getCicloPorOffset(cicloOffset, new Date()), [cicloOffset]);
+  const meta = useMemo(() => metaCicloISOByOffset(cicloOffset, new Date()), [cicloOffset]);
   const [selected, setSelected] = useState<string[]>([]);
 
   function avancar() {
@@ -28,6 +29,15 @@ export default function SelecionarDias() {
   return (
     <div className="container">
       <InlineHeader title="Preenchimento mensal" />
+      <div className="card" style={{ marginTop: 12, marginBottom: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+        <div>
+          Ciclo: {dayjs(inicio).format('DD/MM/YYYY')} até {dayjs(fim).format('DD/MM/YYYY')}
+        </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <AppButton label="Ciclo anterior" variant="outline" onClick={() => { setSelected([]); setCicloOffset(o => o - 1); }} />
+          <AppButton label="Próximo ciclo" variant="outline" onClick={() => { setSelected([]); setCicloOffset(o => o + 1); }} />
+        </div>
+      </div>
       <CalendarCicloWeb
         inicio={inicio}
         fim={fim}
